@@ -12,10 +12,29 @@ const recordedChunks = [];
 const videoElement = document.querySelector('video');
 
 const startBtn = document.getElementById('startBtn');
+
 startBtn.onclick = e => {
   mediaRecorder.start();
   startBtn.classList.add('is-danger');
   startBtn.innerText = 'Recording';
+  console.log('start recording');
+};
+
+const pauseBtn = document.getElementById('pauseBtn');
+
+pauseBtn.onclick = e => {
+  if(mediaRecorder.state === 'recording') {
+    console.log('paused');
+    mediaRecorder.pause();
+    pauseBtn.classList.add('is-warning');
+    pauseBtn.innerText = 'Paused';
+  }
+  else if(mediaRecorder.state === 'paused') {
+    console.log('resumed');
+    mediaRecorder.resume();
+  pauseBtn.classList.remove('is-warning');
+  pauseBtn.innerText = 'Pause';
+  }
 };
 
 const stopBtn = document.getElementById('stopBtn');
