@@ -82,6 +82,14 @@ async function selectSource(source) {
     }
   };
 
+  // Display preview of videoSource if enabled
+  const videoPreviewBtn = document.getElementById('videoPreviewBtn');
+
+  videoPreviewBtn.onclick = e => {
+    let preview = document.getElementById('video');
+    preview.style.display === "none" ? preview.style.display = "block" : preview.style.display = "none";
+  };
+
   // Create a Stream
   const stream = await navigator.mediaDevices
     .getUserMedia(constraints);
